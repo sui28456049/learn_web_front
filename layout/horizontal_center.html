@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS水平居中</title>
+		<style>
+			.test1{
+				width: 600px;
+				height: 300px;
+				border:1px dashed red;
+				/* 直接设置其父元素 */
+				text-align: center;
+			}
+			.test2{
+				width: 600px;
+				height: 300px;
+				border:1px dashed red;
+			}
+			.test2 .inner{
+				/* 定宽块级元素居中 */
+				/* 块级元素居中, 直接设置该块级元素 */
+				/* margin: 0 auto;  
+				width: 200px;
+				height: 200px; */
+				 
+				/* 不定宽元素水平居中 */
+				 /* 
+				 Ⅰ.利用display:inline使块级元素内联显示；
+				 Ⅱ.利用<table>长度自适应的特性；
+				 Ⅲ.结合父元素，设置浮动和定位。 
+				 */
+				display:table;
+				margin: 0 auto;
+			}
+			
+			.test3{
+				position: relative;
+				border: 1px solid aqua;
+				width: 600px;
+				height: 300px;
+				
+			}
+			.test3 .inner{
+				background: skyblue;
+				height：50px;
+				width:50px;
+				position: absolute;
+				top: 50%;
+				margin-top: -25px;  /*该元素高度的一半*/                                 
+			}
+			.test4{
+				position: relative;  
+					   border: 1px solid aqua;
+					   width: 600px;
+					   height: 300px;
+			}
+			.test4 .inner{
+				position: absolute;
+				width:50px;
+				top: 50%;
+				transform: translateY(-50%);    
+			}
+		</style>
+	</head>
+	<body>
+		<h4> .outer是父元素的类名，.inner块级代表子元素,span代表行内子元素。</h4>
+		
+		<h5>1. 水平居中 --- 行内元素的水平居中</h5>
+		<div class="test1">
+			<span> 我是行内元素 111</span>
+			<span> 我是行内元素 111</span>
+			<span> 我是行内元素 111</span>
+		</div>
+		
+		<h5>2. 水平居中 --- 块级元素的水平居中</h5>
+		<div class="test2">
+			<div class="inner">我是块级元素 111</div>
+			<div class="inner">我是块级元素 111</div>
+			<div class="inner">我是块级元素 111</div>
+		</div>
+		
+		<hr>
+		
+		<h5>1. 垂直居中 --- 行内元素的垂直居中</h5>
+		1）如果对父元素的高度没有具体的要求的话，将父元素的padding-top padding-bottom设置为相同的值即可。
+		<pre>
+			padding-top: 60px;
+			padidng-bottom: 60px;                                                       
+			width：300px;
+			height: auto; /*注意：此时父元素的height不能是具体数值*/
+		</pre>
+		
+		2）如果要求父元素的高度为具体数值时，且确保行内元素不会换行时，可以设置line-height等于父元素的高度
+		<pre>
+		.outer{
+			width: 300px;
+			height: 200px;
+			line-height: 200px;                                                  
+			/*text-align: center; */    /*即可同时实现水平和垂直居中。*/                                
+			}
+		</pre>
+		
+		<h5>1. 垂直居中 ---  块级元素的垂直居中</h5>
+		<p>1）已知子元素的高度</p>
+		<div class="test3">
+			<div class="inner">已知子元素的高度</div>
+		</div>
+		
+		<h5>1. 垂直居中 ---  块级元素的垂直居中</h5>
+		<p>1）如果不知道子元素的高度，可以利用css的transform属性</p>
+		<div class="test4">
+			<div class="inner">1111</div>
+		</div>
+	</body>
+	
+	
+</html>
