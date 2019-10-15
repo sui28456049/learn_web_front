@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>rem 动态修改大小页面(移动端适配大法)</title>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		 <h1>flexible方案: https://github.com/amfe/lib-flexible</h1>
+	</body>
+	<script>
+		(function (doc, win) {
+		  var docEl = doc.documentElement,
+		    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		    recalc = function () {
+		      var clientWidth = docEl.clientWidth;
+		      if (!clientWidth) return;
+		      docEl.style.fontSize = 20 * (clientWidth / 375) + 'px';
+		    };
+		  recalc(); 
+		  if (!doc.addEventListener) return;
+		  win.addEventListener(resizeEvt, recalc, false);
+		})(document, window); 
+	</script>
+</html>
