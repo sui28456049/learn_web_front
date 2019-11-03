@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>flex 界面布局</title>
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				border: 1px solid #00FFFF;
+				display: flex;
+			}
+			.item1{
+				width: 50px;
+				height: 50px;
+				background: red;
+				flex-grow: 3;
+			}
+			.item2{
+				width: 100px;
+				height: 50px;
+				background: cyan;
+				flex-grow: 2;
+			}
+			.item3{
+				width: 120px;
+				height: 50px;
+				background: skyblue
+			}
+		</style>
+	</head>
+	<body>
+		<h1>flex 演示</h1>
+		<h2>https://www.cnblogs.com/qcloud1001/p/9848619.html</h2>
+		<pre>
+			元素如何弹性伸缩应对
+			当flex-wrap: nowrap;不折行时，容器宽度有剩余/不够分，弹性元素们该怎么“弹性”地伸缩应对？
+			
+			这里针对上面两种场景，引入两个属性(需应用在弹性元素上)
+			
+			 1. flex-shrink：缩小比例（容器宽度<元素总宽度时如何收缩）
+			 2. flex-grow：放大比例（容器宽度>元素总宽度时如何伸展）
+		</pre>
+		<h3></h3>
+		<div class="box" id="container">
+			<div class="item1"></div>
+			<div class="item2"></div>
+		</div>
+	</body>
+</html>
