@@ -21,6 +21,60 @@ text {
 }
 /* #endif */
 
+.u-padding-wrap{
+	/* width:690rpx; */
+	padding:0 30rpx;
+}
+
+/* start--文本行数限制--start */
+.u-line-1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.u-line-2 {
+    -webkit-line-clamp: 2;
+}
+
+.u-line-3 {
+    -webkit-line-clamp: 3;
+}
+
+.u-line-4 {
+    -webkit-line-clamp: 4;
+}
+
+.u-line-5 {
+    -webkit-line-clamp: 5;
+}
+
+.u-line-2, .u-line-3, .u-line-4, .u-line-5 {
+    overflow: hidden;
+	word-break: break-all;
+    text-overflow: ellipsis; 
+    display: -webkit-box; // 弹性伸缩盒
+    -webkit-box-orient: vertical; // 设置伸缩盒子元素排列方式
+}
+
+/* end--文本行数限制--end */
+
+
+
+.u-text-left {
+	text-align: left;
+}
+
+.u-text-center {
+	text-align: center;
+}
+
+.u-text-right {
+	text-align: right;
+}
+
+
+/*  ---   字体设置  --- */
 .u-font-xs {
 	font-size: 22rpx;
 }
@@ -40,6 +94,25 @@ text {
 .u-font-xl {
 	font-size: 34rpx;
 }
+
+// 定义字体(px)单位，小于20都为px单位字体
+@for $i from 9 to 20 {
+	.u-font-#{$i} {
+		font-size: $i + px;
+	}
+}
+
+// 定义字体(rpx)单位，大于或等于20的都为rpx单位字体
+@for $i from 20 through 40 {
+	.u-font-#{$i} {
+		font-size: $i + rpx;
+	}
+}
+
+/*  ---   字体设置  --- */
+
+
+/* ------- flex布局 -------*/
 
 .u-flex {
 	/* #ifndef APP-NVUE */
@@ -89,17 +162,6 @@ text {
 	justify-content: space-around;
 }
 
-.u-text-left {
-	text-align: left;
-}
-
-.u-text-center {
-	text-align: center;
-}
-
-.u-text-right {
-	text-align: right;
-}
 
 .u-flex-col {
 	/* #ifndef APP-NVUE */
@@ -115,19 +177,7 @@ text {
 	}
 }
 
-// 定义字体(px)单位，小于20都为px单位字体
-@for $i from 9 to 20 {
-	.u-font-#{$i} {
-		font-size: $i + px;
-	}
-}
-
-// 定义字体(rpx)单位，大于或等于20的都为rpx单位字体
-@for $i from 20 through 40 {
-	.u-font-#{$i} {
-		font-size: $i + rpx;
-	}
-}
+/* ------- flex布局 -------*/
 
 // 定义内外边距，历遍1-80
 @for $i from 0 through 80 {
@@ -138,9 +188,28 @@ text {
 			margin: $i + rpx!important;
 		}
 		
+		// 得出: u-margin-tb-30 或者 u-m-tb-30 
+		.u-margin-tb-#{$i}, .u-m-tb-#{$i} {
+			margin-top: $i + rpx!important;
+			margin-bottom: $i + rpx!important;
+		}
+		.u-margin-lr-#{$i}, .u-m-lr-#{$i} {
+			margin-left: $i + rpx!important;
+			margin-right: $i + rpx!important;
+		}
+		
 		// 得出：u-padding-30或者u-p-30
 		.u-padding-#{$i}, .u-p-#{$i} {
 			padding: $i + rpx!important;
+		}
+		// 得出: u-padding-tb-30 或者 u-p-tb-30 
+		.u-padding-tb-#{$i}, .u-p-tb-#{$i} {
+			padding-top: $i + rpx!important;
+			padding-bottom: $i + rpx!important;
+		}
+		.u-padding-lr-#{$i}, .u-p-lr-#{$i} {
+			padding-left: $i + rpx!important;
+			padding-right: $i + rpx!important;
 		}
 		
 		@each $short, $long in l left, t top, r right, b bottom {
@@ -286,3 +355,186 @@ text {
 }
 
 // ************ 颜色   *****************************//
+
+
+// *****  antiosn ****** //
+/* css 滤镜 控制黑白底色gif的 */
+.gif-black{  
+  mix-blend-mode: screen;  
+}
+.gif-white{  
+  mix-blend-mode: multiply; 
+}
+
+
+/* Animation css */
+[class*=animation-] {
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both
+}
+
+.animation-fade {
+    animation-name: fade;
+    animation-duration: .8s;
+    animation-timing-function: linear
+}
+
+.animation-scale-up {
+    animation-name: scale-up
+}
+
+.animation-scale-down {
+    animation-name: scale-down
+}
+
+.animation-slide-top {
+    animation-name: slide-top
+}
+
+.animation-slide-bottom {
+    animation-name: slide-bottom
+}
+
+.animation-slide-left {
+    animation-name: slide-left
+}
+
+.animation-slide-right {
+    animation-name: slide-right
+}
+
+.animation-shake {
+    animation-name: shake
+}
+
+.animation-reverse {
+    animation-direction: reverse
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes scale-up {
+    0% {
+        opacity: 0;
+        transform: scale(.2)
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+@keyframes scale-down {
+    0% {
+        opacity: 0;
+        transform: scale(1.8)
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+@keyframes slide-top {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes slide-bottom {
+    0% {
+        opacity: 0;
+        transform: translateY(100%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0)
+    }
+
+    10% {
+        transform: translateX(-9px)
+    }
+
+    20% {
+        transform: translateX(8px)
+    }
+
+    30% {
+        transform: translateX(-7px)
+    }
+
+    40% {
+        transform: translateX(6px)
+    }
+
+    50% {
+        transform: translateX(-5px)
+    }
+
+    60% {
+        transform: translateX(4px)
+    }
+
+    70% {
+        transform: translateX(-3px)
+    }
+
+    80% {
+        transform: translateX(2px)
+    }
+
+    90% {
+        transform: translateX(-1px)
+    }
+}
+
+@keyframes slide-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@keyframes slide-right {
+    0% {
+        opacity: 0;
+        transform: translateX(100%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+// *****  antiosn ****** //
