@@ -5,7 +5,7 @@
 		</uni-card>
 		<uni-section title="只选择图片" type="line">
 			<view class="example-body">
-				<uni-file-picker limit="9" title="最多选择9张图片"></uni-file-picker>
+				<uni-file-picker limit="9" title="最多选择9张图片" @progress="progress" @success="success" @fail="fail"></uni-file-picker>
 			</view>
 		</uni-section>
 
